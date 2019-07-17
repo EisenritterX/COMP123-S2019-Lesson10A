@@ -6,8 +6,9 @@ using System.Windows.Forms;
 
 namespace COMP123_S2019_Lesson10A
 {
-    static class Program
+    public static class Program
     {
+        public static Dictionary<FormName, Form> Forms;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,13 @@ namespace COMP123_S2019_Lesson10A
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Forms = new Dictionary<FormName, Form>();
+            Forms.Add(FormName.START_FORM, new StartForm);
+            Forms.Add(FormName.MAIN_FORM, new MainForm);
+            Forms.Add(FormName.END_FORM, new EndForm);
+
+            Application.Run(Forms[FormName.START_FORM]);
         }
     }
 }
